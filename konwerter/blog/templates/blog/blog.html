@@ -1,0 +1,14 @@
+{% extends "personal/header.html" %}
+{% block content %}
+	{% for post in object_list %}
+		<h5>{{ post.date|date:"Y-m-d" }}<a href="/blog/{{post.id}}">  {{ post.title }}</a></h5>
+	{% endfor %}
+{% endblock %}
+
+
+<!--<form action="../bioapp/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    "tego nie ma "<input type="file" name="files" multiple/
+    <input type="submit" value="Sub" />
+</form>> -->

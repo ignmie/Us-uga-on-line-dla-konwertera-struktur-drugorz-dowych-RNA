@@ -1,0 +1,20 @@
+
+input[type=text] {
+    height: 200px;
+    width: 1000px;
+}
+input[type=file] {
+    <br>
+    height: 40px;
+    width: 500px;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    
+    height: 30px;
+    width: 350px;
+}
+textarea {
+    height: 200px;
+    width: 1000px;
+}
+}

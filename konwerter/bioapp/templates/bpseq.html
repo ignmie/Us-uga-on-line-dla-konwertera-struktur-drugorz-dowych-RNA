@@ -1,0 +1,32 @@
+{% extends "personal/header.html" %}
+{% block content %}
+{% load staticfiles %}
+    	<link rel="stylesheet" href="{% static 'bioapp/css/stylebio21.css' %}" type = "text/css"/>
+<div class="row">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Konwerter</h1>
+        </div>
+            <div>
+                {% csrf_token %}
+				<li><a href='/media/{{path_dot}}' >Pobierz (dot)</a></li>
+                <pre>{{dot}}</pre>
+            </div>
+            <div>
+                {% csrf_token %}
+				<li><a href='/media/{{path_ct}}' >Pobierz (ct)</a></li>
+                <pre>{{ct}}</pre>   
+            </div>
+            <div>
+                {% csrf_token %}
+				<li><a href='/media/{{path_rnaml}}' >Pobierz (rnaml)</a></li>
+                <pre>{{rnaml}}</pre>
+            </div>
+    </div>
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Zapraszamy!!</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
