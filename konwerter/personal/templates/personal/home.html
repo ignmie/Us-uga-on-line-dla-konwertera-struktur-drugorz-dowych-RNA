@@ -1,0 +1,121 @@
+{% extends "personal/header.html" %}
+{% block content %}
+{% load staticfiles %}
+    	<link rel="stylesheet" href="{% static 'bioapp/css/sc2.css' %}" type = "text/css"/>
+<div class="row">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Usługa on-line dla konwertera struktur drugorzędowych RNA</h1>
+        </div>
+		<h2>Amadeusz Zięba I Ignacy Mielniczek</h2>
+    </div>
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Szczegółowa specyfikacja problemu</h1>
+        </div>
+        <h2>Implementacja dla serwisu www, który dla przesłanego pliku lub wklejonego w oknie formularza
+zapisu struktury drugorzędowej RNA w dowolnym formacie (dot-bracket, CT, BPSEQ, RNAML)
+wyświetli (z możliwością zapisu do pliku) zapis tej struktury w pozostałych formatach oraz
+wygeneruje jej wizualizacje graficzne (klasyczna, łukowa, na okręgu, górska).
+Projekt obejmuje przede wszystkim implementację funkcjonalnego interfejsu graficznego. Do
+konwersji oraz tworzenia plików wizualizacji wykorzystujemy istniejące już moduły i narzędzia.
+</h2>
+    </div>
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Opis Obsługiwanych formatów</h1>
+        </div>
+          <h2>Dot-bracket
+        </h2>
+        <p> Jest to łańcuch składający się z kropek oraz nawiasów, dzięki którym oznacza się niesparowane nukleotydy ”.” oraz sparowaną podstawową parę nukleotydów ”()”. Za pomocą nawiasów kwadratowych ”[]”, ostrych ”<>”, wąsiastych ”{}” przedstawiane są psudowęzły. Zapis może się różnić pomiędzy programami
+            					</p>
+								<img src="{% static 'personal/img/dott.jpg' %}" class="responsive-img"  style="float: left" ; alt="face"> 
+    </div>
+     <div class="col-md-8">
+  
+          <h2>BPSEQ (Basepair and sequence information)
+
+        </h2>
+			<p>  Plik ten zawiera informacje na temat par zasad, zapisanych w trzech kolumnach:</p>
+			<p>1 Kolumna zawiera pozycję sekwencji (licząc od jednego).</p>
+			<p>2 Kolumna zawiera pojedynczą zasadę zapisaną jedną literą</p>
+			<p>3 Kolumna zawiera pozycję sparowanego nukleotydu lub zero gdy nukleotyd jest niesparowany.</p>
+			<img src="{% static 'personal/img/bpseq.jpg' %}" class="responsive-img" style="float: left" ; alt="face">
+    </div>
+    <div class="col-md-8">
+  
+          <h2>CT (Connect table)
+
+        </h2>
+			<p>  Plik ten zawiera informacje na temat par zasad, zapisanych w sześciu kolumnach:</p>
+			<p>1 Kolumna zawiera pozycjęsekwencji (licząc od jednego).</p>
+			<p>2 Kolumna zawiera pojedynczą zasadę zapisaną jedną literą</p>
+			<p>3, 4, 6 Kolumna zawiera pozycję sekwencji odpowiednio poprzednią następną i aktualną.</p>
+			<p>5 Kolumna zawiera pozycjęsparowanego nukleotydu lub zero gdy nukleotyd jest niesparowany.</p>
+			<img src="{% static 'personal/img/ct.jpg' %}" class="responsive-img" style="float: left"; alt="face">
+    </div>
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Instrukcja korzystania z konwertera(plan wykonania projektu)</h1>
+        </div>
+          <h2>Pobranie struktóry
+        </h2>
+        <p> Struktura zostanie pobrana za pomocą formularza z pliku lub jako text za pomocą okna formularza.
+            					
+        </p>
+        <h2>
+            Ustalenie notacji
+        </h2>
+        <p>
+            Poprawności pliku oraz Komunikaty o ewentualnych błędach zawartości takich jak format lub błędów w zapisie. 
+        </p>
+        <h2>
+            Dobór funkcji konwertujących
+        </h2>
+        <p>
+            Funkcja konwertująca zostanie dobrana automatycznie  do formatu załadowanego pliku lub wpisanej struktury.
+        </p>
+        <h2>
+            Zapis plików oraz wizualizacja 
+        </h2>
+        <p>
+            Format zapisu pliku bedzie do wyboru podczas podawania struktury jak i rodzaj wizualizacji.
+        </p>
+    </div>
+    <div class="col-md-8">
+        <div class="page-header">
+            <h1>Założenia</h1>
+        </div>
+        <h2>Zawartość
+</h2>
+   <p>
+       Poprawna zawartość w przypadku dot-bracketto trzy linijki, w których odpowiednio znajduje się: podpis sekwencji, sekwencja, łańcuch kropkowo-nawiasowy.</p> <p> Dla ct oraz bpseq będzie to linijka z podpisem oraz odpowiednia, wymagana liczba kolumn dla danego formatu jak i wierszy świadczących o długości sekwencji.</p> <p>Wymagane odstępy pomiędzy wartościami w wierszu.</p>
+   
+    
+        <h2>Nagłówek
+</h2>
+   <p>
+      Nagłówek po znaku ”>” zawiera tytuł oraz po kropce odpowiednie rozszerzenie (.bpseq.ct.dbn)
+   </p>
+    <h2>Oznaczenia
+</h2>
+  
+       <p> ”.” –oznaczać będzie niesparowane nukleotydy</p>
+        <p>”()” –oznaczać będzie paręnukleotydów</p>
+<p>”[], {}, <>, Aa, Bb, Cc, Dd, Ee, Ff, Gg” –oznaczać będzie pseudowęzły odpowiednio od stopnia pierwszego do stopnia dziesiątego   </p>
+    </div>
+     <div class="col-md-8">
+        <div class="page-header">
+            <h1>Możliwe problemy z konwerterem</h1>
+        </div>
+        <h2>Brak poprawnego nagłówka lub niezgodnego z danymi zawartymi poniżej
+</h2>
+   <h2>Zawartość główna</h2>
+   <p> Dla .ct i .bpseq będą to problemy związane z liczbą kolumn lub z połączeniami, które nie mogą występować (powtórzenia)</p>
+   <p>Dla .dbn będzie to sytuacja gdzie niezgodna jest długość sekwencji do łańcucha struktury lub występują nieprawidłowe ,,otwarcia, zamknięcia,, nawiasów. Problem także z ustaleniem nawiasowaniaw przypadku wysokiej rzędowości pseudowęzłów</p>
+   <h2> problemy ze skryptami wizualizacyjnymi oraz konwertujacymi</h2>
+    </div>
+    
+</div>
+
+ {% endblock %}
